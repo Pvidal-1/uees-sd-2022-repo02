@@ -1,0 +1,8 @@
+{
+    "id": 1,
+    "persona": {
+        "nombre": "Nicolás",
+        "apellido": "Cevallos",
+        "edad": 21
+    }
+}
