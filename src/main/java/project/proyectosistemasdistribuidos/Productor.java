@@ -1,9 +1,5 @@
 package project.proyectosistemasdistribuidos;
 
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonParser;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileInputStream;
@@ -16,7 +12,13 @@ import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.concurrent.TimeoutException;
+
 import org.json.simple.JSONObject;
+
+import com.rabbitmq.client.Channel;
+import com.rabbitmq.client.Connection;
+import com.rabbitmq.client.ConnectionFactory;
 
 public class Productor {
 
@@ -46,12 +48,12 @@ public class Productor {
         return content;
     }
 
-    public String listFiles(String path, List<String> filesList) throws NoSuchAlgorithmException, IOException {
+    public ArrayList<JSONObject> listFiles(String path, List<String> filesList) throws NoSuchAlgorithmException, IOException {
 
         ArrayList<String> hashes = new ArrayList<>();
+        ArrayList<JSONObject> arrayJSON = new ArrayList<>();
         File folder = new File(path);
         File[] files = folder.listFiles();
-
         for (File file : files) {
             if (file.isFile() && file.getName().endsWith(".txt")) {
 
@@ -63,15 +65,16 @@ public class Productor {
 
                 if (!hashes.contains(fileHash)) {
 
-                    System.out.println("Analizando nuevo archivo.");
+                    //System.out.println("Analizando nuevo archivo.");
 
                     String[] words = readFile(file).replace("[\\n|\\t|\\r|,|.|:|;|!|#|'|?|$|%|&|/|)|(|=|¿|¡|1|2|3|4|5|6|7|8|9|0|\\u0000]", "").split(" ");
                     hashes.add(fileHash);
 
                     FileWriter createdJSONFile = new FileWriter(path + "/" + file.getName().replace(".txt", "") + ".json");
-                    HashMap<String, HashMap<String, String>> mapMap = new HashMap();
-                    HashMap<String, String> mapHash = new HashMap();
-                    HashMap<String, String> mapCounter = new HashMap();
+                    HashMap<String, HashMap<String, String>> mapMap = new HashMap<>();
+                    HashMap<String, String> mapHash = new HashMap<>();
+                    HashMap<String, String> mapCounter = new HashMap<>();
+
 
                     mapHash.put("Hash", fileHash);
 
@@ -89,12 +92,13 @@ public class Productor {
                     JSONObject jsonObj = new JSONObject();
                     jsonObj.putAll(mapHash);
                     jsonObj.putAll(mapMap);
+                    arrayJSON.add(jsonObj);
                     
                     try {
 
                         FileWriter fileWriter = new FileWriter(path + "/" + file.getName().replace(".txt", "") + ".json");
                         System.out.println("Escribiendo objeto JSON al archivo...");
-                        System.out.print(jsonObj);
+                        //System.out.print(jsonObj);
 
                         fileWriter.write(jsonObj.toJSONString());
                         fileWriter.flush();
@@ -111,21 +115,16 @@ public class Productor {
                 filesList.add(file.getName());
 
             } else if (file.isDirectory()) {
-                listFiles(file.getAbsolutePath(), filesList);
+                ArrayList<JSONObject> temp = listFiles(file.getAbsolutePath(), filesList);
 
-            } else {
-                System.out.println(file.getName() + " ya fue JSONificado.");
+                for(JSONObject json : temp){
+                    arrayJSON.add(json);
+                }
+                
+
             }
         }
-
-        System.out.println("======================================================");
-        System.out.println("Hashes utilizados:");
-        System.out.println(hashes);
-        System.out.println("======================================================");
-        System.out.println("Lista de archivos analizados:");
-        System.out.println(filesList);
-        System.out.println("======================================================");
-        return "Proceso Finalizado.";
+        return arrayJSON;
 
     }
 
@@ -145,13 +144,28 @@ public class Productor {
         for (int i = 0; i < mdbytes.length; i++) {
             sb.append(Integer.toString((mdbytes[i] & 0xff) + 0x100, 16).substring(1));
         }
+        fis.close();
         return sb.toString();
     }
 
-    public static void main(String[] args) throws IOException, NoSuchAlgorithmException {
+    public static void main(String[] args) throws IOException, NoSuchAlgorithmException, TimeoutException {
 
         Productor p = new Productor("Archivos");
         List<String> filesList = new ArrayList<>();
-        p.listFiles("Archivos", filesList);
+        ArrayList<JSONObject> arrayJSON  = p.listFiles("Archivos", filesList);
+        
+        /*
+        ConnectionFactory factory = new ConnectionFactory();
+
+        try (Connection connection = factory.newConnection()){
+            Channel channel = connection.createChannel();
+            channel.queueDeclare("myRabbitQueue", false, false, false, null);
+
+            for(JSONObject file: arrayJSON){
+                channel.basicPublish("", "myRabbitQueue", false, null, file.toJSONString().getBytes());
+            }
+
+            System.out.println("Mensaje enviado :)");
+        }*/
     }
 }
