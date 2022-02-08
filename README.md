@@ -1,9 +1,43 @@
 # Proyecto del Primer Parcial
 
-En este proyecto, implementaremos un sistema distribuido, que permitirá leer archivos de
-varias carpetas, de cada archivo obtener la frecuencia de aparición de las palabras y luego
-utilizar una cola de trabajo para enviar esa información hacia el programa consumidor que
-agregará la información.
+En este proyecto, implementaremos un sistema distribuido, que permitira leer archivos de
+varias carpetas, de cada archivo obtener la frecuencia de aparicion de las palabras y luego
+utilizar una cola de trabajo para enviar esa informacion hacia el programa consumidor que
+agregara la informacion.
+
+## Informacion del Proyecto
+
+Este proyecto fue construido con Maven.
+El proyecto consta de:
+1. Una carpeta llamada Archivos que contiene los .txt de los cuales se desea generar un .JSON.
+2. Una carpeta llamada src que contiene el codigo fuente.
+3. Una carpeta llamada target donde se encuentran distintas propiedades y donde se genera el ejecutable.
+4. Dos archivos .xml donde se encuentran las dependencias necesarias para ejecutar el proyecto.
+5. Un archivo README con informacion sobre el proyecto y como ejecutarlo.
+
+## Clases
+
+_Dos clases implementadas:_
+
+1. Main.java
+
+_Esta es la clase principal, donde se instancia un objecto de clase Productor, se declara una comunicacion con una cola de RabbitMQ y se encuentra el codigo que ejecuta el programa._
+
+2. Productor.java
+
+_Esta es la clase que se encarga de generar los mensajes que son enviados a una cola de RabbitMQ._
+
+_Esta compuesta por:_
+
+_- Constructor: permite instanciar la clase Productor.java dado el atributo "file", que es la carpetadonde se encuentran los archivos._
+
+_- Metodo toString(): da una estructura legible para los desarrolladores durante la implementacion._
+
+_- Metodo readFile(): permite obtener el contenido de un archivo como un String_
+
+_- Metodo hashFile(): permite obtener la firma SHA512, utilizado para reconocer archivos duplicados._
+
+_- Metodo listFiles(): dado un path, recorre de forma recursiva el directorio, buscando todos los archivos .txt y generando archivos .JSON por cada uno de ellos. Los archivos .JSON contienen el Hash del archivo .txt y su conteo de palabras. Finalmente, retorna una lista con todos los objetos JSON generados._
 
 ## Comenzando 🚀
 
