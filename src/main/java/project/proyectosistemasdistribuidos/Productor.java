@@ -12,7 +12,10 @@ import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
-
+import com.rabbitmq.client.Channel;
+import com.rabbitmq.client.Connection;
+import com.rabbitmq.client.ConnectionFactory;
+import java.util.concurrent.TimeoutException;
 import org.json.simple.JSONObject;
 
 public class Productor {
@@ -141,5 +144,24 @@ public class Productor {
         }
         fis.close();
         return sb.toString();
-    }    
+    } 
+    public static void main(String[] args) throws IOException, NoSuchAlgorithmException, TimeoutException {
+    
+        Productor p = new Productor(args[0]);
+        List<String> filesList = new ArrayList<>();
+        ArrayList<JSONObject> arrayJSON  = p.listFiles(args[0], filesList);
+        
+        ConnectionFactory factory = new ConnectionFactory();
+
+        try (Connection connection = factory.newConnection()){
+            Channel channel = connection.createChannel();
+            channel.queueDeclare("myRabbitQueue", false, false, false, null);
+
+            for(JSONObject file: arrayJSON){
+                channel.basicPublish("", "myRabbitQueue", false, null, file.toJSONString().getBytes());
+            }
+
+            System.out.println("Mensaje enviado :)");
+        }
+    }   
 }

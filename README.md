@@ -19,11 +19,7 @@ El proyecto consta de:
 
 _Dos clases implementadas:_
 
-1. Main.java
-
-_Esta es la clase principal, donde se instancia un objecto de clase Productor, se declara una comunicacion con una cola de RabbitMQ y se encuentra el codigo que ejecuta el programa._
-
-2. Productor.java
+1. Productor.java
 
 _Esta es la clase que se encarga de generar los mensajes que son enviados a una cola de RabbitMQ._
 
@@ -38,6 +34,17 @@ _- Metodo readFile(): permite obtener el contenido de un archivo como un String_
 _- Metodo hashFile(): permite obtener la firma SHA512, utilizado para reconocer archivos duplicados._
 
 _- Metodo listFiles(): dado un path, recorre de forma recursiva el directorio, buscando todos los archivos .txt y generando archivos .JSON por cada uno de ellos. Los archivos .JSON contienen el Hash del archivo .txt y su conteo de palabras. Finalmente, retorna una lista con todos los objetos JSON generados._
+
+_- Metodo main(): Contiene un main donde se instancia un objecto de clase Productor, se declara una comunicacion con una cola de RabbitMQ y se encuentra el codigo que ejecuta el programa._
+
+2. Consumidor.java
+
+_Esta es la clase que consume los mensajes de la cola de RabbitMQ_
+
+_Esta compuesta por:_
+
+_- Metodo main(): Un main donde se consumen los mensajes de la cola, se verifica si es un mensaje repetido, se actualiza la base de datos y muestra el total de archivos procesados._
+
 
 ## Comenzando 🚀
 
@@ -79,6 +86,11 @@ $ sudo apt update
 $ sudo apt install rabbitmq-server
 ```
 
+Para habilitar el plugin que permite utilizar el puerto de http de RabbitMQ
+```
+$ sudo rabbitmq-plugins enable rabbitmq_management
+```
+
 ## Confirmando instalacion y funcionamiento de RabbitMQ ⚙️
 
 _Para comprobar el estado de RabbitMQ_
@@ -106,11 +118,18 @@ _Desde el directorio del proyecto, para compilar los .java y crear el ejecutable
 $ mvn clean install
 ```
 
-_Para ejecutar el .jar en el directorio del proyecto_
+_Para ejecutar el Productor.jar en el directorio del proyecto (donde ruta es el directorio que contiene los .txt a procesar)_
 
 ```
-$ java -jar target/Executable.jar
+$ java -jar target/Productor.jar (ruta)
 ```
+
+_Para ejecutar el Consumidor.jar en el directorio del proyecto_
+
+```
+$ java -jar target/Consumidor.jar
+```
+
 
 ## Pruebas del queue ⚙️
 
@@ -129,6 +148,11 @@ $ rabbitmqctl list_queues
 _Para eliminar los mensajes de los queues_
 ```
 $ rabbitmqctl purge_queue myRabbitQueue
+```
+
+_Para entrar al puerto http de RabbitMQ_
+```
+localhost:15672
 ```
 
 

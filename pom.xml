@@ -19,7 +19,12 @@
         <dependency>
             <groupId>org.json</groupId>
             <artifactId>json</artifactId>
-            <version>20140107</version>
+            <version>20211205</version>
+        </dependency>
+		<dependency>
+            <groupId>com.googlecode.json-simple</groupId>
+            <artifactId>json-simple</artifactId>
+            <version>1.1.1</version>
         </dependency>
         <dependency>
             <groupId>com.google.code.gson</groupId>
@@ -31,9 +36,14 @@
             <artifactId>amqp-client</artifactId>
             <version>5.14.1</version>
         </dependency>
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-databind</artifactId>
+            <version>2.11.2</version>
+            <scope>compile</scope>
+        </dependency>
     </dependencies>
     <build>
-    <finalName> Executable </finalName>
         <plugins>
             <!-- Maven Shade Plugin -->
 			<plugin>
@@ -43,16 +53,45 @@
 				<executions>
 					<!-- Run shade goal on package phase -->
 					<execution>
+                        <id>build-a</id>
 						<phase>package</phase>
 						<goals>
 							<goal>shade</goal>
 						</goals>
 						<configuration>
+                            <finalName> Productor </finalName>
 							<transformers>
 								<!-- add Main-Class to manifest file -->
 								<transformer
 									implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
-									<mainClass>project.proyectosistemasdistribuidos.Main</mainClass>
+									<mainClass>project.proyectosistemasdistribuidos.Productor</mainClass>
+								</transformer>
+							</transformers>
+							<filters>
+								<filter>
+									<artifact>*:*</artifact>
+									<excludes>
+										<exclude>META-INF/*.SF</exclude>
+										<exclude>META-INF/*.DSA</exclude>
+										<exclude>META-INF/*.RSA</exclude>
+									</excludes>
+								</filter>
+							</filters>
+						</configuration>
+					</execution>
+                    <execution>
+                        <id>build-b</id>
+						<phase>package</phase>
+						<goals>
+							<goal>shade</goal>
+						</goals>
+						<configuration>
+                            <finalName> Consumidor </finalName>
+							<transformers>
+								<!-- add Main-Class to manifest file -->
+								<transformer
+									implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
+									<mainClass>project.proyectosistemasdistribuidos.Consumidor</mainClass>
 								</transformer>
 							</transformers>
 							<filters>

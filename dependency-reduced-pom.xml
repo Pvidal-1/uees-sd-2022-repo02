@@ -19,7 +19,7 @@
             <configuration>
               <transformers>
                 <transformer>
-                  <mainClass>project.proyectosistemasdistribuidos.Main</mainClass>
+                  <mainClass>project.proyectosistemasdistribuidos.Productor</mainClass>
                 </transformer>
               </transformers>
               <filters>
