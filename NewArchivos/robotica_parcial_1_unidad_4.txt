@@ -1,0 +1,27 @@
+FDM vs SLA:
+
+	- FDM -> fused deposition modeling (modelado por deposicion fundida): Las impresoras 3D FDM forman capas depositando líneas de material fundido. La resolución de la pieza se define por el tamaño de la boquilla de extrusión y hay huecos entre las líneas redondeadas a medida que la boquilla las deposita. Es posible que las capas no se adhieran completamente entre sí, las capas generalmente son claramente visibles en la superficie y el proceso carece de la capacidad de reproducir detalles intrincados que otras tecnologías pueden ofrecer
+
+	- SLA -> Estereolitografía (Stereolithography, stereolithography apparatus, optical fabrication, photo-solidification, or resin printing): La resina líquida se cura con un láser de alta precisión para formar cada capa, que puede lograr detalles mucho más finos y es más confiable para lograr repetidamente resultados de alta calidad. Como resultado, la impresión SLA 3D es conocida por sus finas características, acabado de superficie suave, máxima precisión de piezas y exactitud
+
+Materiales:
+
+	- Filamentos:
+
+		a. PLA (ácido poliláctico): es un termoplástico fabricado a base de recursos renovables como el almidón de maíz, raíces de tapioca o caña de azúcar
+		b. ABS (acrilonitrilo butadieno estireno): es un polímero termoplástico bastante común en la industria, conocido principalmente por su buena resistencia a las bajas temperaturas y su peso liviano
+
+Proceso de impresion:
+
+	1. Disenar pieza
+	2. Generar STL
+	3. Verificar STL
+	4. Generar G-Code
+	5. Imprimir
+
+	- Archivo STL: es el formato de transmisión de datos estándar por excelencia de la industria de creación rápida de prototipos
+	- Archivo G-Code: el fichero que nos entrega nuestro software de laminado. Contiene en su interior toda la configuración que necesita nuestra impresora 3D para realizar los movimientos o el baile que hace el cabezal, la base caliente, extrusor etc
+
+	- Cura Lulzbot
+	- IdeaMaker
+

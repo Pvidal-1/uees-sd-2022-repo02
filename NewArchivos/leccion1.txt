@@ -1,0 +1,7 @@
+view source permite ver el codigo fuente desde un web browser. esto puede permitir ver la version de SO que se esta utilizando, subdirectorios, datos en la database, query scripting o incluso detalles del CMS. se abre con Ctrl + U
+
+email tracking se usa para monitorear el delivery de los mails a un receptor especifico. con email footrinting es posible por time stamps que revelan la hora y fecha de recibo y apertura de un mail especifico. esto permite obtener direcciones IP, servidores mail, geolocalizacion, si han abierto algun link adjuntado en el correo, informacion sobre el SO y su web browser, el tiempo que tardo en leer el mail y el proveedor del servicio. con la informacion obtenida es posible planificar un ataque y cometer actos de ingenieria social
+
+tcp es un protocolo orientado a conexiones en el internet. su objetivo principal es permitir una comunicacion de extremo a extremo. su unidad basica de transferencia es el segmento y la maxima es MSS (maximum segment size) expresado en octetos
+
+udp se limita a enviar paquetes de datos, llamados datagramas, de un terminal a otro sin garantizar que se reciban correctamente.

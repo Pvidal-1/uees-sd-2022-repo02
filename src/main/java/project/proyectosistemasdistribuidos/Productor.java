@@ -152,7 +152,7 @@ public class Productor {
         ArrayList<JSONObject> arrayJSON  = p.listFiles(args[0], filesList);
         
         ConnectionFactory factory = new ConnectionFactory();
-
+        //factory.setHost("181.199.42.240");
         try (Connection connection = factory.newConnection()){
             Channel channel = connection.createChannel();
             channel.queueDeclare("myRabbitQueue", false, false, false, null);

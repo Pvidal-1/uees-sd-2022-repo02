@@ -1,0 +1,41 @@
+Induccion electromagnetica:
+
+	Un campo magnetico variable induce una corriente en un conductor
+
+	Fuerza magnetica: un campo electrico genera una corriente perpendicular a el y la fuerza resultante depende de la regla de la mano derecha donde la curvatura de los dedos senalan de la intensidad al campo y el pulgar es la fuerza.
+
+	Fuerza magnetica: es la fuerza resultante de la fuerza electromagnetica, es causada por el movimiento de las cargas que se atraen entre ellas
+
+Actuadores electricos:
+	
+	Rele: Es como un amplificador electrico
+
+	Motor electrico: es un dispositivo que convierte la energía eléctrica en energía mecánica de rotación por medio de la acción de los campos magnéticos generados en sus bobinas
+
+	Motor electrico dc (con escobillas): Un motor de corriente continua es cualquiera de una clase de motores eléctricos rotativos que convierte la energía eléctrica de corriente continua en energía mecánica
+
+	Motor electrico dc (sin escobillas): Un motor eléctrico sin escobillas o motor brushless es un motor eléctrico que no emplea escobillas para realizar el cambio de polaridad en el rotor
+
+	Motor paso a paso: es un motor de corriente continua sin escobillas en el que la rotación se divide en un cierto número de pasos resultantes de la estructura del motor
+
+	Motor de reluctancia variable: su funcionamiento se basa en la reluctancia variable, mediante un rotor dentado en hierro dulce, que tiende a alinearse con los polos bobinados del estator
+
+	Servomotores: es un actuador giratorio o actuador lineal que permite un control preciso de la posición angular o lineal, la velocidad y la aceleración. Consiste en un motor adecuado acoplado a un sensor para retroalimentación de posición
+
+Puente H: es un circuito electrónico que generalmente se usa para permitir a un motor eléctrico DC girar en ambos sentidos, avance y retroceso. Son ampliamente usados en robótica y como convertidores de potencia. Los puentes H están disponibles como circuitos integrados, pero también pueden construirse a partir de componentes discretos.
+
+	- Como hemos dicho el puente H se usa para invertir el giro de un motor, pero también puede usarse para frenarlo, al hacer un corto entre las bornas del motor, o incluso puede usarse para permitir que el motor frene bajo su propia inercia, cuando desconectamos el motor de la fuente que lo alimenta. En el siguiente cuadro se resumen las diferentes acciones.
+
+	- Lo más habitual en este tipo de circuitos es emplear interruptores de estado sólido (como Transistores), puesto que sus tiempos de vida y frecuencias de conmutación son mucho más altas. En convertidores de potencia es impensable usar interruptores mecánicos, dado su bajo número de conmutaciones de vida útil y las altas frecuencias que se suelen emplear.
+
+Modulacion por ancho de pulso - PWM: es una técnica en la que se modifica el ciclo de trabajo de una señal periódica (una senoidal o una cuadrada, por ejemplo), ya sea para transmitir información a través de un canal de comunicaciones o para controlar la cantidad de energía que se envía a una carga
+
+	- Periodo
+
+	- Frecuencia
+
+	- Ciclo de trabajo
+
+Smart servo - Dynamixel: es un sistema de actuador inteligente desarrollado para ser las juntas de conexión exclusivas en un robot o estructura mecánica. Están diseñados para ser modulares y encadenados en cualquier robot o diseño mecánico para movimientos robóticos potentes y flexibles
+
+Smart servo - Dynamixel AX-12A: es el estándar para la robótica hobby. Tiene la capacidad de rastrear su velocidad, temperatura, posición del eje, voltaje y carga. El algoritmo de control utilizado para mantener la posición del eje en el actuador ax-12 se puede ajustar individualmente para cada servo, lo que le permite controlar la velocidad y la fuerza de la respuesta del motor. Toda la gestión del sensor y el control de posición es manejado por el microcontrolador incorporado del servo. Este enfoque distribuido deja su controlador principal libre para realizar otras funciones.

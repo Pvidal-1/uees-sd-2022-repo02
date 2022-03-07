@@ -1,0 +1,50 @@
+Kan = visual
+Ban = tarjeta
+
+Pensamiento lean: es un marco de trabajo relacionado con la mejora continua
+1. Eliminar desperdicio: crear solo cosas de valor
+2. Crear conocimiento: tener equipos de diseno y construccion; tmb involucra ensena metodos de resolucion al resto del equipo
+3. Integrar calidad: siempre existe la posibilidad de mejorar en cada iteracion
+4. Diferir compromiso: decisiones irreversibles hasta el ultimo momento responsable (hecho solo por el "super gerente")
+5. Optimizar todo: enfocarse en el flujoi completo de valor y entregar el producto completo
+6. Entregas tempranas: trabajar en bloques pequenos (WIP)
+7. Respetar a la gente: respeto a opiniones y desarrollo profesional (motivacion)
+
+Para iniciar con kanban
+	   |
+	   v
+Mapas de flujo de valor:
+1. Identificar las acciones del flujo de valor y su orden: Se tiene que definir las fases que se tienen que pasar para llegar a la siguiente iteracion de ese mismo producto
+2. Calcular el tiempo de calendario para cada accion: cada accion debe durar un tiempo maximo definido en esta fase
+3. Calcular el tiempo real de trabajo: este es el tiempo que realmente pasa en cada fase.
+4. Identificar el tiempo entre acciones: el tiempo que se tardop de ir de una fase a la siguiente
+5. Identificar ciclos: revisar la cantidad de veces que se tuvo que iterar una misma fase o se tuvo que regresar a otra despues de darse cuenta que hubo un error
+6. Calcular la eficiencia de ciclo de proceso: se calcula la eficiencia de cada fase
+	- Eficiencia del ciclo de proceso = (t valor agregado)/(t ciclo total)
+
+Valor: es la entrega de un beneficio tangible o intangible
+Calidad: es la entrega exitosa del valor esperado
+
+Triangulo de limitaciones de los proyectos agiles (la triple restriccion): son valores que no se pueden poner en riesgo
+1. Alcance
+2. Recursos
+3. Tiempo
+
+Los equipos deben ser multidisciplinarios, dirigidos y auto-organizados
+
+Tablero Kanban:
+1. Se debe especificar el maximo de tareas por columna
+2. Cada tarjeta es una tarea distinta y se tiene que ubicar en su columna
+
+Principios de Kanban:
+1. Visualizar el flujo de trabajo: por medio de las columnas
+2. Limitar el trabajo en progreso: con el WIP y los numeros de tareas por columna
+3. Medir y Administrar el flujo: conocer los tiempos y eficiencia de cada proceso
+4. Hacer las politicas del proceso explicitas: las cosas deben ser claras y explicitas para que cada quien haga lo que le corresponde correctamente
+5. Utilizar modelos para reconocer oportunidades de mejora: hay una retrospectiva donde se buscaba que las personas que participan en el equipo de trabajo hablen de lo que hicieron bien, mal y de sus capacidades de mejora
+
+Referencias (Serious LeAP --> npi que es):
+1. Mindset: de esto depende como se trabajara (lean, agile)
+2. Human Condition: la salud de los trabajadores influye en su desempeno
+3. High-Collaboration Dynamics: aplicar mecanismos de juegos para incentivar el trabajo
+4. Methodologies: es la forma de trabajar en si (lean, agile, plan-driven)

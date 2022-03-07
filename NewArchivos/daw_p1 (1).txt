@@ -1,0 +1,120 @@
+========================================================================================================================
+<!DOCTYPE html>
+<html lang="es">
+
+	<head>
+
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>Ejemplo</title>
+
+		<style>
+
+			img, .class{
+
+				css: valor;
+
+			}
+
+		</style>
+
+	</head>
+
+	<body>
+
+		Todo el doc html
+
+		<script>
+
+			Codigo JS
+
+		</script>
+
+	</body>
+
+</html>
+========================================================================================================================
+
+RWD:
+
+	En <head>: <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	En <head> <style>: el media query
+
+========================================================================================================================
+* {
+	box-sizing: border-box;
+}
+
+@media only screen and (max-width: N px) {
+	.class_ejemplo{
+		width: 100%;
+		height: auto;
+	}
+}
+========================================================================================================================
+
+JavaScript:
+
+	document.querySelector("tag .class"): coge los elementos de la clase especificada dentro del tag descrito
+	document.querySelector("#id"): coge a los elementos del id especificado
+	document.querySelector(".class"): coge a los elementos de la clase especificada
+	foo.textContent: textoContent toma el valor de String de la variable foo
+	alert(): para mostrar una alerta en el navegador
+	document.createTextNode("Texto"): crea un nodo de texto que puede ser añadido a otro elemento
+	foo.appendChild(document.createTextNode("Texto")): appendChild sirve para meter un elemento dentro de otro
+	foo.innerHTML: sobreescribe todo el contenido de foo
+	foo.classList.add("new class"): añade una clase al elemento foo
+	foo.className += "new class": añade una clase al elemento foo
+	foo.classList.remove("new class"): elimina la clase especificada del elemento foo
+	var newObj = document.createElement("tag"): crea un nuevo tag listo para ser añadido al documento
+	console.log(): muestra un mensaje en la consola del navegador
+	foo.style.propiedad: para cambiar el estilo css de foo
+	foo.remove(): elimina foo del documento
+	foo.push(contenido): añade a un arreglo
+	var obj = {"rank":"two", "suit":"hearts"}: crea un objeto con esas claves y valores (diccionario de py)
+	obj.rank = "ace": cambia el valor de la clave rank
+	
+
+JQuery:
+
+	Importacion 1: <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+	Buena practica:
+========================================================================================================================
+Al final del <body>:
+<script>
+
+	var main = function(){
+
+		"use strict";
+		resto del codigo...
+	
+	};
+
+	$(document).ready(main);
+
+<script>
+========================================================================================================================
+
+	$(.class button).on("click", function(event){codigo}): dar funcionalidad a un boton que se encuentra en class
+	var $new_commment = $("<tag>"): para crear elementos del tag especificado
+	$new_comment.text("this is a new comment"): para anadir texto a elemento nuevo
+	$(.class).append($new_comment): para anadir comentario nuevo a una clase especifica
+	$(".class input").val(): para tomar el valor de lo que se escribio en el input tag que se encuentra en class
+
+JSON:
+	
+	Para crear objetos a partir de strings JSON:
+========================================================================================================================
+<script>
+
+	var jsonString = '{"key1":"value1", "key2":"value2"}';
+	var foo = JSON.parse(jsonString);
+	console.log(foo); --> esto nomas para ver
+
+</script>
+========================================================================================================================
+
+Ajax:
+
+	const xhttp = new XMLHttpRequest(): permit usar el objeto de ajax con sus metodos correspondientes
+	Buena practica: uso de funciones callback --> function(myFunc)
